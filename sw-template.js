@@ -4,7 +4,8 @@
 const CACHE_NAME = 'rumble-loadouts-{{VERSION}}';
 const urlsToCache = [
   '/',
-  '/index.html'
+  '/index.html',
+  '/elm.js'
 ];
 
 // Install event: Cache the application files
@@ -47,14 +48,18 @@ self.addEventListener('fetch', event => {
       .then(response => {
         // Return cached version if available
         if (response) {
+          console.log('Serving from cache:', event.request.url);
           return response;
         }
-        // Otherwise fetch from network
-        return fetch(event.request);
-      })
-      .catch(() => {
-        // If both cache and network fail, return offline page
-        console.log('Both cache and network failed for:', event.request.url);
+        // Otherwise try to fetch from network
+        return fetch(event.request).catch(() => {
+          // If network fails, try to serve the main page for navigation requests
+          if (event.request.mode === 'navigate') {
+            return caches.match('/index.html');
+          }
+          console.log('Failed to serve:', event.request.url);
+          throw new Error('Network error and no cache available');
+        });
       })
   );
 });
