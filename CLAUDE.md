@@ -34,3 +34,6 @@ Update the `raidData` list in `src/Main.elm` with new teams in the format:
 
 ## Development Workflow
 After every development change, run `./build_project.sh` to compile and test the application.
+
+## ⚠️ CRITICAL: Version Management
+**ALWAYS update the version in `package.json` when making ANY changes to the application.** The Service Worker uses version-based caching, so failing to update the version will prevent users from receiving updates. Even small changes require a version bump to ensure proper cache invalidation.
