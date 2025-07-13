@@ -20,11 +20,12 @@ function buildServiceWorker() {
     // Replace version placeholder
     const serviceWorker = template.replace('{{VERSION}}', version);
 
-    // Ensure dist directory exists
+    // Clean and recreate dist directory
     const distPath = path.join(__dirname, '..', 'dist');
-    if (!fs.existsSync(distPath)) {
-      fs.mkdirSync(distPath, { recursive: true });
+    if (fs.existsSync(distPath)) {
+      fs.rmSync(distPath, { recursive: true, force: true });
     }
+    fs.mkdirSync(distPath, { recursive: true });
 
     // Write service worker to dist directory
     const outputPath = path.join(distPath, 'sw.js');
