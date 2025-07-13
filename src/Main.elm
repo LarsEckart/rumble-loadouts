@@ -193,17 +193,20 @@ raidData =
               , heroicTeams = 
                     [ { hero = "Doomhammer", loadout = "rumblo:CB8QABoECBwQABoECFgQARoECB0QARoECAcQABoECAgQAhoECEQQAg==" }
                     , { hero = "Grom", loadout = "rumblo:CDAQARoECBwQABoECAkQABoECB0QARoECFgQARoECEQQAhoECEcQAg==" }
+                    , { hero = "Ysera", loadout = "rumblo:CFsQARoECAgQAhoECAcQABoECEQQAhoECBwQABoECCwQABoECB0QAQ==" }
                     ]
               }
             , { name = "Gehennas & Shazzah"
               , normalTeams = 
                     [ { hero = "Baron Rivendare", loadout = "rumblo:CBIQAhoECCsQARoECDoQARoECC4QABoECBMQARoECCYQAhoECBsQAQ==" }
+                    , { hero = "Rivendare", loadout = "rumblo:CBIQAhoECCsQABoECDoQARoECC4QABoECBsQARoECBMQARoECCYQAg==" }
                     ]
               , heroicTeams = 
                     [ { hero = "Rivendare", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }
                     , { hero = "Hogger", loadout = "rumblo:CDUQABoECD8QABoECEcQAhoECEQQAhoECBsQAhoECBMQARoECCYQAg==" }
                     , { hero = "Rivendare Giant", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }
                     , { hero = "Rivendare Fire Elemental", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECCcQABoECBMQARoECEsQABoECEcQAg==" }
+                    , { hero = "Malfurion", loadout = "rumblo:CDkQAhoECCYQAhoECF0QABoECDsQAhoECEQQAhoECBMQARoECEcQAg==" }
                     ]
               }
             , { name = "Garr"
@@ -222,7 +225,7 @@ raidData =
                     ]
               , heroicTeams =
                     [ { hero = "Ragnaros", loadout = "rumblo:CEgQABoECBsQABoECCYQAhoECDEQABoECDIQABoECF0QARoECCsQAg==" }
-                    , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECBEQAhoECB4QARoECCYQAhoECBkQABoECBsQARoECCsQAg==" }
+                    , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECBEQAhoECBsQARoECCYQAhoECBkQABoECDEQABoECCsQAQ==" }
                     ]
               }
             , { name = "Golemagg"
@@ -239,6 +242,7 @@ raidData =
                     , { hero = "Jaina Priestess/Bandits", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQAhoECEQQAhoECB0QABoECAcQAA==" }
                     , { hero = "Jaina No Starfall", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQARoECEQQAhoECEcQAhoECEwQAg==" }
                     , { hero = "Jaina No Starfall No Rime", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQARoECEQQAhoECEcQAhoECFgQAQ==" }
+                    , { hero = "Doomhammer", loadout = "rumblo:CB8QAhoECBwQABoECFgQARoECEwQAhoECEcQAhoECF0QABoECEQQAg==" }
                     ]
               }
             , { name = "Ragnaros"
@@ -249,8 +253,10 @@ raidData =
                     ]
               , heroicTeams =
                     [ { hero = "Drakkisath Fast", loadout = "rumblo:CCEQABoECBsQARoECFgQARoECC4QABoECB0QARoECCMQARoECEsQAg==" }
-                    , { hero = "Malfurion", loadout = "rumblo:CDkQAhoECBUQAhoECC4QABoECAkQABoECB0QARoECFgQARoECFoQAQ==" }
+                    , { hero = "Malfurion", loadout = "rumblo:CDkQAhoECA8QAhoECDYQARoECBEQAhoECB0QARoECFgQARoECFoQAQ==" }
                     , { hero = "Sneed", loadout = "rumblo:CE4QARoECBsQARoECCYQAhoECFoQARoECC4QABoECBEQAhoECCsQAA==" }
+                    , { hero = "Drakkisath", loadout = "rumblo:CCEQABoECBsQARoECFgQARoECDEQARoECB0QARoECF0QABoECEsQAg==" }
+                    , { hero = "Onu", loadout = "rumblo:CEMQAhoECB0QARoECCYQAhoECC4QABoECAkQABoECEQQAhoECCsQAA==" }
                     ]
               }
             ]

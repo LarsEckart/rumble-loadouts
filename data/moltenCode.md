@@ -135,3 +135,17 @@ Golemagg - Murk-Eye: Charlga:crumblo:CEIQAhoECBkQABoECAwQABoECEcQAhoECB4QARoECFg
 Ragnaros - Onu (Execute): rumblo:CEMQAhoECB0QARoECCYQAhoECBEQAhoECAkQABoECFgQARoECFEQAQ==
 
 Ragnaros - Onu (Miner): rumblo:CEMQAhoECBsQARoECCYQAhoECBEQAhoECB0QARoECFgQARoECFEQAQ==
+
+Lucifron Heroic Anub'arak: rumblo:CBAQARoECB4QARoECEcQAhoECAkQABoECE0QAhoECFgQARoECDIQAA==
+
+Magmadar Heroic Ysera: rumblo:CFsQARoECAgQAhoECAcQABoECEQQAhoECBwQABoECCwQABoECB0QAQ==
+
+Gehennas & Shazzah Heroic Malfurion: rumblo:CDkQAhoECCYQAhoECF0QABoECDsQAhoECEQQAhoECBMQARoECEcQAg==
+
+Garr Heroic Thalnos: rumblo:CBQQABoECCwQABoECEQQAhoECA0QARoECFkQAhoECAkQABoECF0QAA==
+
+Geddon Heroic Ragnaros: rumblo:CEgQABoECBsQABoECCYQAhoECDEQABoECDIQABoECF0QARoECCsQAg==
+
+Golemagg Heroic Doomhammer: rumblo:CB8QAhoECBwQABoECFgQARoECEwQAhoECEcQAhoECF0QABoECEQQAg==
+
+Ragnaros Heroic Onu: rumblo:CEMQAhoECB0QARoECCYQAhoECC4QABoECAkQABoECEQQAhoECCsQAA==
