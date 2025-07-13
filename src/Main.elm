@@ -4,8 +4,6 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Process
-import Task
 import Toast
 
 
@@ -127,7 +125,7 @@ update msg model =
 
         CopyLoadout loadout ->
             let
-                (newToasts, toastCmd) =
+                ( newToasts, toastCmd ) =
                     Toast.add model.toasts (Toast.expireIn 700 "Copied to clipboard!")
             in
             ( { model | toasts = newToasts }
@@ -139,7 +137,7 @@ update msg model =
 
         ToastMsg toastMsg ->
             let
-                (newToasts, toastCmd) =
+                ( newToasts, toastCmd ) =
                     Toast.update toastMsg model.toasts
             in
             ( { model | toasts = newToasts }
@@ -178,7 +176,7 @@ raidData =
     [ { name = "Molten Core"
       , bosses =
             [ { name = "Lucifron"
-              , normalTeams = 
+              , normalTeams =
                     [ { hero = "Grommash", loadout = "rumblo:CDAQARoECAkQABoECFkQAhoECDIQABoECFgQARoECEcQAhoECFoQAQ==" }
                     ]
               , heroicTeams =
@@ -187,21 +185,21 @@ raidData =
                     ]
               }
             , { name = "Magmadar"
-              , normalTeams = 
+              , normalTeams =
                     [ { hero = "Hogger", loadout = "rumblo:CDUQABoECDIQABoECAgQAhoECEQQAhoECB0QARoECAcQABoECBwQAA==" }
                     ]
-              , heroicTeams = 
+              , heroicTeams =
                     [ { hero = "Doomhammer", loadout = "rumblo:CB8QABoECBwQABoECFgQARoECB0QARoECAcQABoECAgQAhoECEQQAg==" }
                     , { hero = "Grom", loadout = "rumblo:CDAQARoECBwQABoECAkQABoECB0QARoECFgQARoECEQQAhoECEcQAg==" }
                     , { hero = "Ysera", loadout = "rumblo:CFsQARoECAgQAhoECAcQABoECEQQAhoECBwQABoECCwQABoECB0QAQ==" }
                     ]
               }
             , { name = "Gehennas & Shazzah"
-              , normalTeams = 
+              , normalTeams =
                     [ { hero = "Baron Rivendare", loadout = "rumblo:CBIQAhoECCsQARoECDoQARoECC4QABoECBMQARoECCYQAhoECBsQAQ==" }
                     , { hero = "Rivendare", loadout = "rumblo:CBIQAhoECCsQABoECDoQARoECC4QABoECBsQARoECBMQARoECCYQAg==" }
                     ]
-              , heroicTeams = 
+              , heroicTeams =
                     [ { hero = "Rivendare", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }
                     , { hero = "Hogger", loadout = "rumblo:CDUQABoECD8QABoECEcQAhoECEQQAhoECBsQAhoECBMQARoECCYQAg==" }
                     , { hero = "Rivendare Giant", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }
