@@ -1,0 +1,25 @@
+{
+  "name": "rumble-loadouts",
+  "version": "1.0.0",
+  "description": "Mobile-first web app for looking up and copying team loadouts for Rumble raids.",
+  "main": "index.js",
+  "scripts": {
+    "format": "elm-format --yes src/",
+    "format:check": "elm-format --validate src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LarsEckart/rumble-loadouts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LarsEckart/rumble-loadouts/issues"
+  },
+  "homepage": "https://github.com/LarsEckart/rumble-loadouts#readme",
+  "devDependencies": {
+    "elm-format": "^0.8.8"
+  }
+}

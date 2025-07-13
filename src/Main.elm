@@ -6,12 +6,16 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 
 
+
 -- PORTS
+
 
 port copyToClipboard : String -> Cmd msg
 
 
+
 -- MAIN
+
 
 main : Program () Model Msg
 main =
@@ -23,11 +27,14 @@ main =
         }
 
 
+
 -- MODEL
+
 
 type alias Model =
     { currentView : View
     }
+
 
 type View
     = RaidList
@@ -35,24 +42,29 @@ type View
     | BossList String Difficulty
     | TeamList String Difficulty String
 
+
 type Difficulty
     = Normal
     | Heroic
+
 
 type alias Raid =
     { name : String
     , bosses : List Boss
     }
 
+
 type alias Boss =
     { name : String
     , teams : List Team
     }
 
+
 type alias Team =
     { hero : String
     , loadout : String
     }
+
 
 init : () -> ( Model, Cmd Msg )
 init _ =
@@ -61,7 +73,9 @@ init _ =
     )
 
 
+
 -- UPDATE
+
 
 type Msg
     = SelectRaid String
@@ -71,6 +85,7 @@ type Msg
     | BackToDifficulty String
     | BackToBosses String Difficulty
     | CopyLoadout String
+
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -111,14 +126,18 @@ update msg model =
             )
 
 
+
 -- SUBSCRIPTIONS
+
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
 
 
+
 -- DATA
+
 
 type alias BossData =
     { name : String
@@ -126,124 +145,171 @@ type alias BossData =
     , heroicTeams : List Team
     }
 
+
 type alias RaidData =
     { name : String
     , bosses : List BossData
     }
 
+
 raidData : List RaidData
 raidData =
     [ { name = "Molten Core"
-      , bosses = 
-          [ { name = "Lucifron"
-            , normalTeams = [ { hero = "Anub'arak", loadout = "rumblo:CBAQARoECB4QARoECEcQAhoECAkQABoECE0QAhoECEwQAhoECDIQAA==" } ]
-            , heroicTeams = 
-                [ { hero = "Maiev", loadout = "rumblo:CDgQAhoECEcQAhoECFoQARoECCQQABoECDIQABoECFgQARoECAkQAA==" }
-                , { hero = "Anub'arak", loadout = "rumblo:CBAQARoECB4QARoECEcQAhoECAkQABoECE0QAhoECEwQAhoECDIQAA==" }
-                ]
-            }
-          , { name = "Magmadar"
-            , normalTeams = [ { hero = "Doomhammer", loadout = "rumblo:CB8QABoECBwQABoECFgQARoECB0QARoECAcQABoECAgQAhoECEQQAg==" } ]
-            , heroicTeams = [ { hero = "Doomhammer", loadout = "rumblo:CB8QABoECBwQABoECFgQARoECB0QARoECAcQABoECAgQAhoECEQQAg==" } ]
-            }
-          , { name = "Gehennas"
-            , normalTeams = [ { hero = "Rivendare", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }, { hero = "Rivendare (pilot)", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" } ]
-            , heroicTeams = [ { hero = "Rivendare", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" } ]
-            }
-          , { name = "Garr"
-            , normalTeams = 
-                [ { hero = "Cenarius", loadout = "rumblo:CBcQARoECBUQABoECBsQARoECAMQABoECFkQAhoECEYQABoECF0QAA==" }
-                , { hero = "Sneed", loadout = "rumblo:CE4QARoECEsQAhoECFkQAhoECDsQAhoECEEQABoECDoQARoECF0QAA==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Thalnos", loadout = "rumblo:CBQQABoECCwQABoECEQQAhoECA0QARoECFkQAhoECF0QABoECAkQAA==" }
-                , { hero = "Cenarius", loadout = "rumblo:CBcQARoECBUQABoECA0QARoECEQQAhoECFkQAhoECEYQABoECF0QAA==" }
-                ]
-            }
-          , { name = "Geddon"
-            , normalTeams = 
-                [ { hero = "Ragnaros", loadout = "rumblo:CEgQABoECBsQABoECCYQAhoECDEQABoECDIQABoECF0QARoECCsQAg==" }
-                , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECBEQAhoECBsQARoECCYQAhoECBkQABoECDEQABoECCsQAQ==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Ragnaros", loadout = "rumblo:CEgQABoECBsQABoECCYQAhoECDEQABoECDIQABoECF0QARoECCsQAg==" }
-                , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECBEQAhoECB4QARoECCYQAhoECBkQABoECBsQARoECCsQAg==" }
-                ]
-            }
-          , { name = "Golemagg"
-            , normalTeams = 
-                [ { hero = "Jaina Rime", loadout = "rumblo:CDcQARoECDEQARoECB0QABoECAgQAhoECCwQABoECEwQAhoECAcQAA==" }
-                , { hero = "Jaina Blizzard", loadout = "rumblo:CDcQARoECB0QARoECAMQABoECAgQAhoECEcQAhoECDEQARoECAcQAA==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Jaina", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQAhoECEQQAhoECEwQAhoECAcQAA==" }
-                , { hero = "Ragnaros", loadout = "rumblo:CEgQARoECCQQAhoECDsQARoECDEQABoECF0QARoECEQQAhoECEwQAg==" }
-                ]
-            }
-          , { name = "Ragnaros"
-            , normalTeams = 
-                [ { hero = "Malfurion", loadout = "rumblo:CDkQAhoECA8QAhoECDYQARoECBEQAhoECB0QARoECFgQARoECFoQAQ==" }
-                , { hero = "Drakkisath", loadout = "rumblo:CCEQABoECBsQARoECFgQARoECDEQARoECB0QARoECF0QABoECEsQAg==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Drakkisath Fast", loadout = "rumblo:CCEQABoECBsQARoECFgQARoECC4QABoECB0QARoECCMQARoECEsQAg==" }
-                , { hero = "Malfurion", loadout = "rumblo:CDkQAhoECBUQAhoECC4QABoECAkQABoECB0QARoECFgQARoECFoQAQ==" }
-                ]
-            }
-          ]
+      , bosses =
+            [ { name = "Lucifron"
+              , normalTeams = 
+                    [ { hero = "Grommash", loadout = "rumblo:CDAQARoECAkQABoECFkQAhoECDIQABoECFgQARoECEcQAhoECFoQAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Maiev", loadout = "rumblo:CDgQAhoECEcQAhoECFoQARoECCQQABoECDIQABoECFgQARoECAkQAA==" }
+                    , { hero = "Anub'arak", loadout = "rumblo:CBAQARoECB4QARoECEcQAhoECAkQABoECE0QAhoECEwQAhoECDIQAA==" }
+                    ]
+              }
+            , { name = "Magmadar"
+              , normalTeams = 
+                    [ { hero = "Hogger", loadout = "rumblo:CDUQABoECDIQABoECAgQAhoECEQQAhoECB0QARoECAcQABoECBwQAA==" }
+                    ]
+              , heroicTeams = 
+                    [ { hero = "Doomhammer", loadout = "rumblo:CB8QABoECBwQABoECFgQARoECB0QARoECAcQABoECAgQAhoECEQQAg==" }
+                    , { hero = "Grom", loadout = "rumblo:CDAQARoECBwQABoECAkQABoECB0QARoECFgQARoECEQQAhoECEcQAg==" }
+                    ]
+              }
+            , { name = "Gehennas & Shazzah"
+              , normalTeams = 
+                    [ { hero = "Baron Rivendare", loadout = "rumblo:CBIQAhoECCsQARoECDoQARoECC4QABoECBMQARoECCYQAhoECBsQAQ==" }
+                    ]
+              , heroicTeams = 
+                    [ { hero = "Rivendare", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }
+                    , { hero = "Hogger", loadout = "rumblo:CDUQABoECD8QABoECEcQAhoECEQQAhoECBsQAhoECBMQARoECCYQAg==" }
+                    , { hero = "Rivendare Giant", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECEcQAhoECBMQARoECCYQAhoECDsQAg==" }
+                    , { hero = "Rivendare Fire Elemental", loadout = "rumblo:CBIQAhoECDoQARoECEQQAhoECCcQABoECBMQARoECEsQABoECEcQAg==" }
+                    ]
+              }
+            , { name = "Garr"
+              , normalTeams =
+                    [ { hero = "Cairne", loadout = "rumblo:CBYQABoECFkQAhoECEsQAhoECC4QABoECEQQAhoECEwQAhoECF0QAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Thalnos", loadout = "rumblo:CBQQABoECCwQABoECEQQAhoECA0QARoECFkQAhoECF0QABoECAkQAA==" }
+                    , { hero = "Cenarius", loadout = "rumblo:CBcQARoECBUQABoECA0QARoECEQQAhoECFkQAhoECEYQABoECF0QAA==" }
+                    , { hero = "Sneed", loadout = "rumblo:CE4QARoECEsQAhoECFkQAhoECDsQAhoECEEQABoECDoQARoECF0QAA==" }
+                    ]
+              }
+            , { name = "Geddon"
+              , normalTeams =
+                    [ { hero = "Charlga", loadout = "rumblo:CBgQARoECBkQABoECCYQAhoECDIQABoECDoQAhoECCsQARoECBsQAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Ragnaros", loadout = "rumblo:CEgQABoECBsQABoECCYQAhoECDEQABoECDIQABoECF0QARoECCsQAg==" }
+                    , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECBEQAhoECB4QARoECCYQAhoECBkQABoECBsQARoECCsQAg==" }
+                    ]
+              }
+            , { name = "Golemagg"
+              , normalTeams =
+                    [ { hero = "Murk-Eye", loadout = "rumblo:CEIQAhoECBkQABoECAwQABoECEcQAhoECB4QARoECFgQARoECCYQAg==" }
+                    , { hero = "Cenarius", loadout = "rumblo:CBcQABoECBUQAhoECAgQABoECCIQARoECB0QARoECEQQAhoECF0QAA==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Jaina", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQAhoECEQQAhoECEwQAhoECAcQAA==" }
+                    , { hero = "Ragnaros", loadout = "rumblo:CEgQARoECCQQAhoECDsQARoECDEQABoECF0QARoECEQQAhoECEwQAg==" }
+                    , { hero = "Jaina Rime", loadout = "rumblo:CDcQARoECDEQARoECB0QABoECAgQAhoECCwQABoECEwQAhoECAcQAA==" }
+                    , { hero = "Jaina Blizzard", loadout = "rumblo:CDcQARoECB0QARoECAMQABoECAgQAhoECEcQAhoECDEQARoECAcQAA==" }
+                    , { hero = "Jaina Priestess/Rime", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQAhoECEQQAhoECEwQAhoECAcQAA==" }
+                    , { hero = "Jaina Priestess/Bandits", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQAhoECEQQAhoECB0QABoECAcQAA==" }
+                    , { hero = "Jaina No Starfall", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQARoECEQQAhoECEcQAhoECEwQAg==" }
+                    , { hero = "Jaina No Starfall No Rime", loadout = "rumblo:CDcQARoECDMQARoECF0QABoECAgQARoECEQQAhoECEcQAhoECFgQAQ==" }
+                    ]
+              }
+            , { name = "Ragnaros"
+              , normalTeams =
+                    [ { hero = "Thalnos", loadout = "rumblo:CBQQABoECCYQAhoECB0QARoECAkQARoECBsQARoECAIQAhoECAoQAQ==" }
+                    , { hero = "Onu (Execute)", loadout = "rumblo:CEMQAhoECB0QARoECCYQAhoECBEQAhoECAkQABoECFgQARoECFEQAQ==" }
+                    , { hero = "Onu (Miner)", loadout = "rumblo:CEMQAhoECBsQARoECCYQAhoECBEQAhoECB0QARoECFgQARoECFEQAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Drakkisath Fast", loadout = "rumblo:CCEQABoECBsQARoECFgQARoECC4QABoECB0QARoECCMQARoECEsQAg==" }
+                    , { hero = "Malfurion", loadout = "rumblo:CDkQAhoECBUQAhoECC4QABoECAkQABoECB0QARoECFgQARoECFoQAQ==" }
+                    , { hero = "Sneed", loadout = "rumblo:CE4QARoECBsQARoECCYQAhoECFoQARoECC4QABoECBEQAhoECCsQAA==" }
+                    ]
+              }
+            ]
       }
-    , { name = "Ironforge"
-      , bosses = 
-          [ { name = "Thiefcatchers"
-            , normalTeams = 
-                [ { hero = "Grom", loadout = "rumblo:CDAQAhoECFEQAhoECEsQAhoECB4QARoECFkQAhoECEYQABoECF0QAA==" }
-                , { hero = "Thrall", loadout = "rumblo:CF8QABoECFkQAhoECFEQARoECA8QAhoECAUQARoECF0QAhoECEQQAg==" }
-                , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECAUQARoECB4QARoECFkQAhoECEQQAhoECF0QABoECFEQAA==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Cairne", loadout = "rumblo:CBYQABoECFkQAhoECFEQAhoECF0QABoECEYQABoECB4QARoECAsQAQ==" }
-                , { hero = "Tirion Blizzard", loadout = "rumblo:CFMQABoECF0QABoECAMQABoECA4QABoECEYQABoECFkQAhoECB4QAQ==" }
-                , { hero = "Thrall", loadout = "rumblo:CF8QABoECFkQAhoECBMQARoECB4QARoECDsQARoECF0QABoECEYQAA==" }
-                ]
-            }
-          , { name = "Mekkatorque"
-            , normalTeams = 
-                [ { hero = "Anub'arak", loadout = "rumblo:CBAQARoECB4QABoECEcQAhoECE0QAhoECFgQARoECEwQAhoECFkQAg==" }
-                , { hero = "Cenarius", loadout = "rumblo:CBcQARoECBUQABoECBsQARoECEcQAhoECEQQAhoECF0QABoECFkQAg==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Arthas", loadout = "rumblo:CF4QARoECEQQAhoECF0QABoECEYQABoECFgQARoECBMQARoECFkQAg==" }
-                , { hero = "Rend", loadout = "crumblo:CEoQABoECAsQARoECFgQARoECDIQABoECCAQABoECEQQAhoECBMQAQ==" }
-                , { hero = "Ragnaros Grunts", loadout = "crumblo:CEgQARoECBsQAhoECAYQARoECFkQAhoECF0QABoECEQQAhoECFYQAQ==" }
-                , { hero = "Ragnaros Giant", loadout = "rumblo:CEgQARoECDsQARoECAYQARoECFkQAhoECF0QABoECEQQAhoECBsQAg==" }
-                ]
-            }
-          , { name = "Magni"
-            , normalTeams = 
-                [ { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECEQQAhoECB4QARoECFEQAhoECAkQABoECF0QABoECFoQAQ==" }
-                , { hero = "Thalnos", loadout = "rumblo:CBQQABoECA0QARoECEQQAhoECAkQABoECA8QAhoECF0QABoECFEQAg==" }
-                ]
-            , heroicTeams = 
-                [ { hero = "Thaurissan", loadout = "rumblo:CCUQARoECBsQARoECEYQABoECDsQAhoECEQQAhoECFkQAhoECAkQAA==" }
-                , { hero = "Sneed", loadout = "rumblo:CE4QABoECAkQABoECFEQAhoECDoQARoECFoQARoECEYQARoECFkQAg==" }
-                , { hero = "Arthas", loadout = "rumblo:CF4QABoECEQQAhoECF0QABoECFkQAhoECFoQARoECAkQABoECBwQAA==" }
-                ]
-            }
-          ]
+    , { name = "Siege of Ironforge"
+      , bosses =
+            [ { name = "Thiefcatchers"
+              , normalTeams =
+                    [ { hero = "Thrall", loadout = "rumblo:CF8QABoECFkQAhoECFEQARoECA8QAhoECAUQARoECF0QAhoECEQQAg==" }
+                    , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECAUQARoECB4QARoECFkQAhoECEQQAhoECF0QABoECFEQAA==" }
+                    , { hero = "Grom", loadout = "rumblo:CDAQAhoECFEQAhoECEsQAhoECB4QARoECFkQAhoECEYQABoECF0QAA==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Cairne", loadout = "rumblo:CBYQABoECFkQAhoECFEQAhoECF0QABoECEYQABoECB4QARoECAsQAQ==" }
+                    , { hero = "Tirion Blizzard", loadout = "rumblo:CFMQABoECF0QABoECAMQABoECA4QABoECEYQABoECFkQAhoECB4QAQ==" }
+                    , { hero = "Thrall", loadout = "rumblo:CF8QABoECFkQAhoECBMQARoECB4QARoECDsQARoECF0QABoECEYQAA==" }
+                    ]
+              }
+            , { name = "Mekkatorque"
+              , normalTeams =
+                    [ { hero = "Cenarius", loadout = "rumblo:CBcQARoECBUQABoECBsQARoECEcQAhoECEQQAhoECF0QABoECFkQAg==" }
+                    , { hero = "Anub'arak", loadout = "rumblo:CBAQARoECB4QABoECEcQAhoECE0QAhoECFgQARoECEwQAhoECFkQAg==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Arthas (Eggs)", loadout = "rumblo:CF4QARoECEQQAhoECF0QABoECEYQABoECFgQARoECBMQARoECFkQAg==" }
+                    , { hero = "Arthas (Living Bomb)", loadout = "rumblo:CF4QARoECEQQAhoECF0QABoECEYQABoECAsQARoECBMQARoECFkQAg==" }
+                    , { hero = "Rend", loadout = "rumblo:CEoQABoECAsQARoECFgQARoECDIQABoECCAQABoECEQQAhoECBMQAQ==" }
+                    , { hero = "Ragnaros Grunts", loadout = "rumblo:CEgQARoECBsQAhoECAYQARoECFkQAhoECF0QABoECEQQAhoECFYQAQ==" }
+                    , { hero = "Ragnaros Giant", loadout = "rumblo:CEgQARoECDsQARoECAYQARoECFkQAhoECF0QABoECEQQAhoECBsQAg==" }
+                    ]
+              }
+            , { name = "Magni"
+              , normalTeams =
+                    [ { hero = "Sylvanas AoW", loadout = "rumblo:CFIQAhoECEQQAhoECA8QAhoECFEQAhoECAkQABoECF0QABoECFkQAg==" }
+                    , { hero = "Thalnos", loadout = "rumblo:CBQQABoECA0QARoECEQQAhoECAkQABoECA8QAhoECF0QABoECFEQAg==" }
+                    , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECEQQAhoECB4QARoECFEQAhoECAkQABoECF0QABoECFoQAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Thaurissan", loadout = "rumblo:CCUQARoECBsQARoECEYQABoECDsQAhoECEQQAhoECFkQAhoECAkQAA==" }
+                    , { hero = "Arthas", loadout = "rumblo:CF4QABoECEQQAhoECF0QABoECFkQAhoECFoQARoECAkQABoECBwQAA==" }
+                    , { hero = "Sneed", loadout = "rumblo:CE4QABoECAkQABoECFEQAhoECDoQARoECFoQARoECEYQARoECFkQAg==" }
+                    ]
+              }
+            ]
       }
-    , { name = "Horde Event"
-      , bosses = 
-          [ { name = "Mythic Bosses"
-            , normalTeams = 
-                [ { hero = "Thrall Mythic Onu", loadout = "rumblo:CEMQABoECFkQAhoECEYQABoECF0QARoECEQQAhoECB4QARoECE8QAg==" }
-                , { hero = "Gazlowe Mythic Arthas", loadout = "rumblo:CF4QABoECEQQAhoECF0QABoECFkQAhoECEYQABoECB4QARoECCQQAg==" }
-                , { hero = "Magatha Mythic Arthas", loadout = "rumblo:CF4QABoECEQQAhoECF0QABoECFkQAhoECEYQABoECB4QARoECFgQAQ==" }
-                ]
-            , heroicTeams = []
-            }
-          ]
+    , { name = "Siege of Stormwind"
+      , bosses =
+            [ { name = "Marcus"
+              , normalTeams =
+                    [ { hero = "Doomhammer", loadout = "rumblo:CB8QAhoECFkQAhoECFgQARoECCoQABoECEsQAhoECBMQARoECEYQAA==" }
+                    , { hero = "Tirion", loadout = "rumblo:CFMQABoECCoQABoECC4QABoECFgQARoECFkQAhoECEYQABoECBMQAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Arthas", loadout = "rumblo:CF4QABoECEQQAhoECF0QABoECFgQARoECBMQARoECFkQAhoECEYQAA==" }
+                    , { hero = "Anub'arak", loadout = "rumblo:CBAQARoECE0QAhoECEcQAhoECB4QARoECEQQAhoECFkQAhoECFgQAQ==" }
+                    ]
+              }
+            , { name = "Allison"
+              , normalTeams =
+                    [ { hero = "Anub'arak", loadout = "rumblo:CBAQARoECEwQARoECEcQAhoECB4QAhoECFgQARoECFkQAhoECE0QAg==" }
+                    , { hero = "Ysera", loadout = "rumblo:CFsQARoECAUQARoECA0QABoECB0QARoECFgQARoECCQQAhoECEcQAg==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Cenarius", loadout = "rumblo:CBcQARoECBMQARoECAsQAhoECFEQAhoECFkQAhoECEQQAhoECF0QAA==" }
+                    , { hero = "Cairne", loadout = "rumblo:CBYQABoECFkQAhoECBMQARoECF0QABoECEQQAhoECFYQARoECAsQAg==" }
+                    ]
+              }
+            , { name = "Bolvar"
+              , normalTeams =
+                    [ { hero = "Malfurion", loadout = "rumblo:CDkQAhoECBUQABoECB0QARoECD0QAhoECDYQARoECFkQAhoECFgQAQ==" }
+                    ]
+              , heroicTeams =
+                    [ { hero = "Sneed", loadout = "rumblo:CE4QAhoECFkQAhoECBMQARoECDsQAhoECAkQABoECF0QABoECEYQAA==" }
+                    , { hero = "Arthas", loadout = "rumblo:CF4QAhoECEQQAhoECF0QABoECEYQABoECAkQABoECB0QARoECFkQAg==" }
+                    ]
+              }
+            ]
       }
     ]
+
 
 raids : List Raid
 raids =
@@ -254,6 +320,7 @@ raids =
             }
         )
         raidData
+
 
 getBossTeamsForDifficulty : String -> String -> Difficulty -> List Team
 getBossTeamsForDifficulty raidName bossName difficulty =
@@ -267,13 +334,18 @@ getBossTeamsForDifficulty raidName bossName difficulty =
         |> Maybe.map
             (\boss ->
                 case difficulty of
-                    Normal -> boss.normalTeams
-                    Heroic -> boss.heroicTeams
+                    Normal ->
+                        boss.normalTeams
+
+                    Heroic ->
+                        boss.heroicTeams
             )
         |> Maybe.withDefault []
 
 
+
 -- VIEW
+
 
 view : Model -> Html Msg
 view model =
@@ -292,6 +364,7 @@ view model =
                 viewTeamList raidName difficulty bossName
         ]
 
+
 viewRaidList : Html Msg
 viewRaidList =
     div []
@@ -308,6 +381,7 @@ viewRaidList =
                 raids
             )
         ]
+
 
 viewDifficultySelect : String -> Html Msg
 viewDifficultySelect raidName =
@@ -326,14 +400,20 @@ viewDifficultySelect raidName =
             [ text "Heroic" ]
         ]
 
+
 viewBossList : String -> Difficulty -> Html Msg
 viewBossList raidName difficulty =
     let
-        difficultyText = case difficulty of
-            Normal -> "Normal"
-            Heroic -> "Heroic"
-        
-        raid = List.filter (\r -> r.name == raidName) raids |> List.head
+        difficultyText =
+            case difficulty of
+                Normal ->
+                    "Normal"
+
+                Heroic ->
+                    "Heroic"
+
+        raid =
+            List.filter (\r -> r.name == raidName) raids |> List.head
     in
     div []
         [ button [ class "btn back-btn", onClick (BackToDifficulty raidName) ] [ text "← Back" ]
@@ -351,18 +431,25 @@ viewBossList raidName difficulty =
                         )
                         r.bosses
                     )
+
             Nothing ->
                 text "Raid not found"
         ]
 
+
 viewTeamList : String -> Difficulty -> String -> Html Msg
 viewTeamList raidName difficulty bossName =
     let
-        difficultyText = case difficulty of
-            Normal -> "Normal"
-            Heroic -> "Heroic"
-        
-        teams = getBossTeamsForDifficulty raidName bossName difficulty
+        difficultyText =
+            case difficulty of
+                Normal ->
+                    "Normal"
+
+                Heroic ->
+                    "Heroic"
+
+        teams =
+            getBossTeamsForDifficulty raidName bossName difficulty
     in
     div []
         [ button [ class "btn back-btn", onClick (BackToBosses raidName difficulty) ] [ text "← Back" ]
@@ -370,6 +457,7 @@ viewTeamList raidName difficulty bossName =
         , if List.isEmpty teams then
             div [ style "text-align" "center", style "padding" "2rem", style "color" "#999" ]
                 [ text "No teams available for this difficulty" ]
+
           else
             div []
                 (List.map
