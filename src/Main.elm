@@ -128,7 +128,7 @@ update msg model =
         CopyLoadout loadout ->
             let
                 (newToasts, toastCmd) =
-                    Toast.add model.toasts (Toast.expireIn 1000 "Copied to clipboard!")
+                    Toast.add model.toasts (Toast.expireIn 700 "Copied to clipboard!")
             in
             ( { model | toasts = newToasts }
             , Cmd.batch
