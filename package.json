@@ -1,13 +1,13 @@
 {
   "name": "rumble-loadouts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Mobile-first web app for looking up and copying team loadouts for Rumble raids.",
   "main": "index.js",
   "scripts": {
     "format": "elm-format --yes src/",
     "format:check": "elm-format --validate src/",
     "build-sw": "node scripts/build-sw.js",
-    "build": "npm run build-sw && elm make src/Main.elm --output=dist/index.html --optimize && node scripts/add-viewport.js",
+    "build": "npm run build-sw && elm make src/Main.elm --output=dist/elm.js --optimize && cp index.html dist/ && node scripts/add-viewport.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

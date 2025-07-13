@@ -28,20 +28,31 @@ if ('serviceWorker' in navigator) {
 }
 </script>`;
   
-  // Find the charset meta tag and add viewport after it
-  const updatedContent = htmlContent
-    .replace(
+  // Check if viewport meta tag already exists
+  const hasViewport = htmlContent.includes('name="viewport"');
+  
+  // Find the charset meta tag and add viewport after it if it doesn't exist
+  let updatedContent = htmlContent;
+  if (!hasViewport) {
+    updatedContent = updatedContent.replace(
       /<meta charset="UTF-8">/,
       '<meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">'
-    )
+    );
+  }
+  
+  updatedContent = updatedContent
     .replace(
       /<title>Main<\/title>/,
       '<title>Rumble Loadouts</title>'
-    )
-    .replace(
+    );
+  
+  // Only add Service Worker if it's not already there
+  if (!updatedContent.includes('serviceWorker')) {
+    updatedContent = updatedContent.replace(
       /<\/head>/,
       `${serviceWorkerScript}\n</head>`
     );
+  }
   
   // Write the updated HTML back
   fs.writeFileSync(htmlPath, updatedContent);

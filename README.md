@@ -12,6 +12,31 @@ Mobile-first web app for looking up and copying team loadouts for Rumble raids.
 - Filter by difficulty (Normal/Heroic)
 - One-click copy to clipboard
 - Mobile-optimized interface
+- Offline functionality with Service Worker
+
+## Screenshots
+
+<div align="center">
+
+### Mobile Interface
+
+<img src="screenshots/mobile-home.png" width="300" alt="Home screen showing raid selection">
+
+*Main screen with raid selection*
+
+<img src="screenshots/mobile-difficulty.png" width="300" alt="Difficulty selection for Molten Core">
+
+*Difficulty selection (Normal/Heroic)*
+
+<img src="screenshots/mobile-bosses.png" width="300" alt="Boss list for Molten Core Normal">
+
+*Boss selection screen*
+
+<img src="screenshots/mobile-loadouts.png" width="300" alt="Loadouts for Ragnaros with copy buttons">
+
+*Team loadouts with one-click copy*
+
+</div>
 
 ## Development
 
