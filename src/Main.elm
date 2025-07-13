@@ -6,6 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Process
 import Task
+import Toast
 
 
 
@@ -35,7 +36,7 @@ main =
 
 type alias Model =
     { currentView : View
-    , showToast : Bool
+    , toasts : Toast.Tray String
     }
 
 
@@ -71,7 +72,7 @@ type alias Team =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { currentView = RaidList, showToast = False }
+    ( { currentView = RaidList, toasts = Toast.tray }
     , Cmd.none
     )
 
@@ -88,7 +89,7 @@ type Msg
     | BackToDifficulty String
     | BackToBosses String Difficulty
     | CopyLoadout String
-    | HideToast
+    | ToastMsg Toast.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -125,17 +126,19 @@ update msg model =
             )
 
         CopyLoadout loadout ->
-            ( { model | showToast = True }
+            let
+                (newToasts, toastCmd) =
+                    Toast.add model.toasts (Toast.expireIn 2000 "Copied to clipboard!")
+            in
+            ( { model | toasts = newToasts }
             , Cmd.batch
                 [ copyToClipboard loadout
-                , Process.sleep 700 |> Task.perform (\_ -> HideToast)
+                , Cmd.map ToastMsg toastCmd
                 ]
             )
 
-        HideToast ->
-            ( { model | showToast = False }
-            , Cmd.none
-            )
+        ToastMsg toastMsg ->
+            ( model, Cmd.none )
 
 
 
@@ -362,10 +365,7 @@ getBossTeamsForDifficulty raidName bossName difficulty =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ if model.showToast then
-            div [ class "toast" ] [ text "Copied to clipboard!" ]
-          else
-            text ""
+        [ Toast.render viewToast model.toasts (Toast.config ToastMsg)
         , case model.currentView of
             RaidList ->
                 viewRaidList
@@ -379,6 +379,11 @@ view model =
             TeamList raidName difficulty bossName ->
                 viewTeamList raidName difficulty bossName
         ]
+
+
+viewToast : List (Html.Attribute msg) -> Toast.Info String -> Html msg
+viewToast attrs info =
+    div (class "toast" :: attrs) [ text info.content ]
 
 
 viewRaidList : Html Msg
