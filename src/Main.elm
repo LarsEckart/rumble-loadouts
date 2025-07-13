@@ -128,7 +128,7 @@ update msg model =
             ( { model | showToast = True }
             , Cmd.batch
                 [ copyToClipboard loadout
-                , Process.sleep 2000 |> Task.perform (\_ -> HideToast)
+                , Process.sleep 700 |> Task.perform (\_ -> HideToast)
                 ]
             )
 
