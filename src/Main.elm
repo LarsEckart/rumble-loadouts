@@ -4,6 +4,8 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Process
+import Task
 
 
 
@@ -33,6 +35,7 @@ main =
 
 type alias Model =
     { currentView : View
+    , showToast : Bool
     }
 
 
@@ -68,7 +71,7 @@ type alias Team =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { currentView = RaidList }
+    ( { currentView = RaidList, showToast = False }
     , Cmd.none
     )
 
@@ -85,6 +88,7 @@ type Msg
     | BackToDifficulty String
     | BackToBosses String Difficulty
     | CopyLoadout String
+    | HideToast
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -121,8 +125,16 @@ update msg model =
             )
 
         CopyLoadout loadout ->
-            ( model
-            , copyToClipboard loadout
+            ( { model | showToast = True }
+            , Cmd.batch
+                [ copyToClipboard loadout
+                , Process.sleep 2000 |> Task.perform (\_ -> HideToast)
+                ]
+            )
+
+        HideToast ->
+            ( { model | showToast = False }
+            , Cmd.none
             )
 
 
@@ -350,7 +362,11 @@ getBossTeamsForDifficulty raidName bossName difficulty =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ case model.currentView of
+        [ if model.showToast then
+            div [ class "toast" ] [ text "Copied to clipboard!" ]
+          else
+            text ""
+        , case model.currentView of
             RaidList ->
                 viewRaidList
 

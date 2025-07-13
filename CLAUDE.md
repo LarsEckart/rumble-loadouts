@@ -31,3 +31,6 @@ Update the `raidData` list in `src/Main.elm` with new teams in the format:
 ```elm
 { hero = "Hero Name", loadout = "rumblo:..." }
 ```
+
+## Development Workflow
+After every development change, run `./build_project.sh` to compile and test the application.
