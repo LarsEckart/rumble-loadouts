@@ -224,6 +224,7 @@ raidData =
               , heroicTeams =
                     [ { hero = "Ragnaros", loadout = "rumblo:CEgQABoECBsQABoECCYQAhoECDEQABoECDIQABoECF0QARoECCsQAg==" }
                     , { hero = "Sylvanas", loadout = "rumblo:CFIQAhoECBEQAhoECBsQARoECCYQAhoECBkQABoECDEQABoECCsQAQ==" }
+                    , { hero = "Rend", loadout = "rumblo:CEoQARoECCcQABoECBsQARoECBEQAhoECCsQABoECDoQARoECDEQAA==" }
                     ]
               }
             , { name = "Golemagg"
