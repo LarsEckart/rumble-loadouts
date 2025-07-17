@@ -315,8 +315,9 @@ raidData =
               }
             , { name = "Allison"
               , normalTeams =
-                    [ { hero = "Anub'arak", loadout = "rumblo:CBAQARoECEwQARoECEcQAhoECB4QAhoECFgQARoECFkQAhoECE0QAg==" }
+                    [ { hero = "Anub'arak", loadout = "rumblo:CBAQARoECEwQARoECEcQAhoECB4QARoECFgQARoECFkQAhoECE0QAg==" }
                     , { hero = "Ysera", loadout = "rumblo:CFsQARoECAUQARoECA0QABoECB0QARoECFgQARoECCQQAhoECEcQAg==" }
+                    , { hero = "Rivendare", loadout = "rumblo:CBIQAhoECA4QABoECAUQARoECEcQAhoECFkQAhoECEsQAhoECFgQAQ==" }
                     ]
               , heroicTeams =
                     [ { hero = "Cenarius", loadout = "rumblo:CBcQARoECBMQARoECAsQAhoECFEQAhoECFkQAhoECEQQAhoECF0QAA==" }
@@ -326,6 +327,7 @@ raidData =
             , { name = "Bolvar"
               , normalTeams =
                     [ { hero = "Malfurion", loadout = "rumblo:CDkQAhoECBUQABoECB0QARoECD0QAhoECDYQARoECFkQAhoECFgQAQ==" }
+                    , { hero = "Sneed", loadout = "rumblo:CE4QARoECFkQAhoECBMQARoECDsQAhoECAkQABoECB0QARoECEYQAA==" }
                     ]
               , heroicTeams =
                     [ { hero = "Sneed", loadout = "rumblo:CE4QAhoECFkQAhoECBMQARoECDsQAhoECAkQABoECF0QABoECEYQAA==" }
