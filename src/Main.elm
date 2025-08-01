@@ -178,6 +178,8 @@ raidData =
             [ { name = "Lucifron"
               , normalTeams =
                     [ { hero = "Grommash", loadout = "rumblo:CDAQARoECAkQABoECFkQAhoECDIQABoECFgQARoECEcQAhoECFoQAQ==" }
+                    , { hero = "Maiev", loadout = "rumblo:CDgQAhoECBsQABoECFoQARoECEcQAhoECDIQABoECFgQARoECAkQAA==" }
+                    , { hero = "Anub", loadout = "rumblo:CBAQARoECE0QAhoECEcQAhoECAkQABoECEwQARoECFkQARoECB4QAQ==" }
                     ]
               , heroicTeams =
                     [ { hero = "Maiev", loadout = "rumblo:CDgQAhoECEcQAhoECFoQARoECCQQABoECDIQABoECFgQARoECAkQAA==" }
