@@ -1,6 +1,6 @@
 {
   "name": "rumble-loadouts",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Mobile-first web app for looking up and copying team loadouts for Rumble raids.",
   "main": "index.js",
   "scripts": {
